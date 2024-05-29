@@ -1,0 +1,3 @@
+//brute is to iterate thru arr and store shifted value of index to one place
+
+//optimal is to store the first value and shift each of the other values
