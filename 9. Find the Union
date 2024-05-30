@@ -1,0 +1,3 @@
+//brute store the first array in set then the second and then combine them O(n1logn+n2logn)+O(n1+n2)    O(n1+n2)
+
+//optimal is by using 2 pointer approch
