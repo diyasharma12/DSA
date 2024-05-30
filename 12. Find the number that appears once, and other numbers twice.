@@ -1,0 +1,5 @@
+//brute is to cnt each element O(n*n)
+
+//better is to use a hashmap O(nlogn+n)
+
+//optimal is to use xor O(n)
