@@ -1,0 +1,29 @@
+//brute is to cheak by using 2 for loops i=0,j=i aproxx.O(n*n)
+
+//better is to use a hash map we store the value of array and we check if the targest val-value of the array exist in the hashmap O(nlogn),O(n)
+#include <bits/stdc++.h>
+using namespace std;
+
+string twoSum(int n, vector<int> &arr, int target) {
+    unordered_map<int, int> mpp;
+    for (int i = 0; i < n; i++) {
+        int num = arr[i];
+        int moreNeeded = target - num;
+        if (mpp.find(moreNeeded) != mpp.end()) {
+            return "YES";
+        }
+        mpp[num] = i;
+    }
+    return "NO";
+}
+
+int main()
+{
+    int n = 5;
+    vector<int> arr = {2, 6, 5, 8, 11};
+    int target = 14;
+    string ans = twoSum(n, arr, target);
+    cout << "This is the answer for variant 1: " << ans << endl;
+    return 0;
+}
+//optimal is to use the 2 pointer approch, we sort the array and find the index.
