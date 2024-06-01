@@ -1,0 +1,21 @@
+//brute is to run 3 for loops and find the sum of each subarray to check weather it gives sum==k O(n^3)
+
+//better is to run 2 loops and cnt the sum simultaniously 
+
+//optimal is to use map ds and store the arr sum minus k, the value that we need so we find the remaining value
+class Solution {
+public:
+    int subarraySum(vector<int>& nums, int k) {
+        map<int,int>mpp;
+        mpp[0]=1;
+        int presum=0;
+        int cnt=0;
+        for(int i=0;i<nums.size();i++){
+            presum+=nums[i];
+            int remove=presum-k;
+            cnt+=mpp[remove];
+            mpp[presum]+=1;
+        }
+        return cnt;
+    }
+};
