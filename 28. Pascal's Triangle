@@ -1,0 +1,19 @@
+//if you have to get the value at a given row and column then it will be r-1cc-1
+//you have to make a pattern of 1-> 5*1/1->1*5*4/1*2 so you do the operation (row-col)/col
+//to generate the whole triangle we need
+//brute is to use the prev (r-1)c(c-1) O(n^3)
+//optimal is to use the formula (row-col)/col O(n^2)
+class Solution {
+public:
+    vector<vector<int>> generate(int numRows) {
+        vector<vector<int>>triangle;
+        for(int i=0;i<numRows;i++){
+            vector<int>row(i+1,1);
+            for(int j = 1; j < i; j++){
+                row[j] = triangle[i - 1][j - 1] + triangle[i - 1][j];
+            }
+            triangle.push_back(row);
+        }
+        return triangle;
+    }
+};
