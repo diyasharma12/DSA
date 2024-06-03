@@ -1,0 +1,20 @@
+//brute is to run 3 for loops and see it its value is = k O(N^3)
+
+//better is to optimise it by using 2 loops O(N^2)
+
+//brute is to find the l=value left and find val^the val left (store in map,find xor, if its the xr^K then cnt++) O(NLOGN)
+class Solution {
+public:
+    long long beautifulSubarrays(vector<int>& nums) {
+        long long xr=0;
+        map<int,int>mpp;
+        mpp[xr]++;
+        long long cnt=0;
+        for(int i=0;i<nums.size();i++){
+            xr=xr^nums[i];
+            cnt+=mpp[xr];
+            mpp[xr]++;
+        }
+        return cnt;
+    }
+};
