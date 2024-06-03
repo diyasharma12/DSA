@@ -1,0 +1,62 @@
+//brute is We will run a loop that will select the elements of the array one by one. now, for each unique element, 
+//we will run another loop and count its occurrence in the given array. If any element occurs more than (N/3), we will include. O(n^2)
+
+
+//better is to store it into a hashmap  O(NlogN),O(N)
+#include <bits/stdc++.h>
+using namespace std;
+
+vector<int> majorityElement(vector<int> v) {
+    int n = v.size(); //size of the array
+    vector<int> ls; // list of answers
+
+    //declaring a map:
+    map<int, int> mpp;
+
+    // least occurrence of the majority element:
+    int mini = int(n / 3) + 1;
+
+    //storing the elements with its occurnce:
+    for (int i = 0; i < n; i++) {
+        mpp[v[i]]++;
+
+        //checking if v[i] is
+        // the majority element:
+        if (mpp[v[i]] == mini) {
+            ls.push_back(v[i]);
+        }
+        if (ls.size() == 2) break;
+    }
+
+    return ls;
+}
+
+//optimal is to use extended moore's voting algo  O(N) + O(N),to cnt and check
+If cnt1 is 0 and the current element is not el2 then store the current element of the array as el1 along with increasing the cnt1 value by 1.
+If cnt2 is 0 and the current element is not el1 then store the current element of the array as el2 along with increasing the cnt2 value by 1.
+If the current element and el1 are the same increase the cnt1 by 1.
+If the current element and el2 are the same increase the cnt2 by 1.
+Other than all the above cases: decrease cnt1 and cnt2 by 1.
+class Solution {
+public:
+    vector<int> majorityElement(vector<int>& nums) {
+        map<int,int> m;
+        for(int i=0; i<nums.size(); i++) {
+            if(m.find(nums[i]) == m.end()) {
+                m[nums[i]] = 1;
+            } else {
+                m[nums[i]]++;
+            }
+        }
+        
+        vector<int> result;
+        int threshold = nums.size() / 3;
+        for(auto& it : m) {
+            if(it.second > threshold) {
+                result.push_back(it.first);
+            }
+        }
+        
+        return result;
+    }
+}; 
